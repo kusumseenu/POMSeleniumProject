@@ -2,56 +2,35 @@ package Pages;
 
 import org.openqa.selenium.WebDriver;
 
-import CustomControls.Button;
-import CustomControls.DropDown;
-import CustomControls.WebElementActions;
 import Locators.ElementLocators;
 
 public class HomePage {
-	
 	WebDriver driver;
-	
-	WebElementActions webElementActions;
-	Button button;
-	DropDown dropdown;
+	ElementLocators elementLocators;
 
-	public HomePage(WebDriver driver) {
+	public HomePage(WebDriver driver1) {
 
-		this.driver = driver;
-		
-		webElementActions = new WebElementActions (driver);
-		button = new Button(driver);
-		dropdown = new DropDown(driver);
+		driver = driver1;
+		elementLocators = new ElementLocators();
 	}
 	
 	public void ClickRemoveButton() {
-		button.Click(ElementLocators.HomePage.removeButon);
+		driver.findElement(elementLocators.removeButon).click();
 	}
 	
 	public void ClickAddToCartButton() {
-		button.Click(ElementLocators.HomePage.addToCartButton);
+		driver.findElement(elementLocators.addToCartButton).click();
 	}
 	
 	
 	public boolean IsRemoveButtonDisplayed() {
-		return webElementActions.IsDisplayed(ElementLocators.HomePage.removeButon);
+		return driver.findElement(elementLocators.removeButon).isDisplayed();
 		
 	}
 	
 	
 	public String GetHomePageTitle() {
-		return webElementActions.GetText(ElementLocators.HomePage.homePageTitleLoc);
+		return driver.findElement(elementLocators.homePageTitleLoc).getText();
 	}
 	
-	public void SortProductsOrderUsingText(String sortOrder) {
-		dropdown.SelectByVisibleText(ElementLocators.HomePage.productSortDropDown, sortOrder);
-	}
-	
-	public void SortProductsOrderUsingValue(String sortOrder) {
-		dropdown.SelectByValue(ElementLocators.HomePage.productSortDropDown, sortOrder);
-	}
-	
-	public void SortProductsOrderUsingIndex(int sortOrder) {
-		dropdown.SelectByIndex(ElementLocators.HomePage.productSortDropDown, sortOrder);
-	}
 }

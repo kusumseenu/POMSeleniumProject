@@ -2,47 +2,40 @@ package Pages;
 
 import org.openqa.selenium.WebDriver;
 
-import CustomControls.Button;
-import CustomControls.TextField;
 import CustomControls.WebElementActions;
 import Locators.ElementLocators;
 
 public class LoginPage {
-	
 	WebDriver driver;
-	
-	WebElementActions webElementActions;
-	Button button;
-	TextField textField;
+	ElementLocators elementLocators;
+	WebElementActions Action;
 
 	public LoginPage(WebDriver driver) {
 
 		this.driver = driver;
-		
-		webElementActions = new WebElementActions(driver);
-		button = new Button(driver);
-		textField = new TextField(driver);
+		elementLocators = new ElementLocators();
+		Action=new WebElementActions(driver);
 	}
 
 	private void EneterUserName(String userName) {
-		textField.SendKeys(ElementLocators.LoginPage.loginInput, userName);
+		Action.SendKeys(elementLocators.loginInput, userName);
 
 	}
 
 	private void EneterPassword(String password) {
-		textField.SendKeys(ElementLocators.LoginPage.passwordInput, password);
-		//driver.findElement(ElementLocators.LoginPage.passwordInput).sendKeys(password);
+		Action.SendKeys(elementLocators.passwordInput, password);
+		//driver.findElement(elementLocators.passwordInput).sendKeys(password);
 
 	}
 
 	private void ClickLoginButton() {
-		button.Click(ElementLocators.LoginPage.loginButton);
-	//	driver.findElement(ElementLocators.LoginPage.loginButton).click();
+		Action.Click(elementLocators.loginButton);
+	//	driver.findElement(elementLocators.loginButton).click();
 
 	}
 	
 	public String GetIndexPageTitle() {
-		return webElementActions.GetText(ElementLocators.LoginPage.indexPageTitle);
+		return Action.GetText(elementLocators.indexPageTitle);
 	}
 	
 	public void LoginToApplication(String userName, String password) {

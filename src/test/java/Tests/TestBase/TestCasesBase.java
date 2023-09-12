@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+//import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestCasesBase {
 	
@@ -14,7 +14,7 @@ public class TestCasesBase {
 	@BeforeTest
 	public void SetUp() {
 		String URL = "https://www.saucedemo.com/";
-		WebDriverManager.chromedriver().setup();
+		//WebDriverManager.chromedriver().setup();
 		/*ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");*/
 		driver = new ChromeDriver();
